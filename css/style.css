@@ -1,0 +1,497 @@
+/* ============================================================
+   Crown & Beauty Hair Studio — custom styles
+   Tailwind handles layout; this holds component classes,
+   reveal animations, and a few touch-ups.
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- Buttons ---------- */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #c6a56b 0%, #d9c19a 100%);
+  color: #241a16;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  box-shadow: 0 10px 30px -12px rgba(198, 165, 107, 0.6);
+  cursor: pointer;
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 38px -10px rgba(198, 165, 107, 0.75);
+}
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 9999px;
+  border: 1.5px solid #c6a56b;
+  color: #4a3028;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+.btn-outline:hover {
+  background: #c6a56b;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn-outline-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(248, 243, 236, 0.6);
+  color: #f8f3ec;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+.btn-outline-light:hover {
+  background: rgba(248, 243, 236, 0.12);
+  border-color: #f8f3ec;
+  transform: translateY(-2px);
+}
+
+/* ---------- Navigation ---------- */
+.nav-link {
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.3s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1.5px;
+  background: #c6a56b;
+  transition: width 0.3s ease;
+}
+.nav-link:hover {
+  color: #c6a56b;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.mobile-link {
+  display: block;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(198, 165, 107, 0.15);
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+.mobile-link:hover {
+  color: #c6a56b;
+  padding-left: 0.5rem;
+}
+
+/* Navbar scrolled state (added by JS) */
+#navbar.scrolled {
+  background: rgba(248, 243, 236, 0.92);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 6px 30px -18px rgba(36, 26, 22, 0.5);
+}
+#navbar.scrolled nav {
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+/* ---------- Services cards ---------- */
+.service-card {
+  background: #fff;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid rgba(198, 165, 107, 0.18);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 50px -24px rgba(74, 48, 40, 0.45);
+}
+.service-card .img-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+.service-card .img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+.service-card:hover .img-wrap img {
+  transform: scale(1.08);
+}
+.service-card .price-tag {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(36, 26, 22, 0.85);
+  color: #d9c19a;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border-radius: 9999px;
+  backdrop-filter: blur(4px);
+}
+
+/* ---------- Gallery ---------- */
+.filter-btn {
+  padding: 0.5rem 1.15rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #4a3028;
+  background: transparent;
+  border: 1px solid rgba(198, 165, 107, 0.4);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.filter-btn:hover {
+  border-color: #c6a56b;
+  color: #c6a56b;
+}
+.filter-btn.active {
+  background: #4a3028;
+  color: #f8f3ec;
+  border-color: #4a3028;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.9rem;
+  cursor: pointer;
+  aspect-ratio: 3 / 4;
+  background: #e8d8c3;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+.gallery-item .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(36, 26, 22, 0.75) 0%, rgba(36, 26, 22, 0) 55%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+}
+.gallery-item:hover .overlay {
+  opacity: 1;
+}
+.gallery-item .overlay span {
+  color: #f8f3ec;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.gallery-item .zoom-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background: rgba(248, 243, 236, 0.9);
+  color: #241a16;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.gallery-item:hover .zoom-icon {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* hide / show for filtering */
+.gallery-item.is-hidden {
+  display: none;
+}
+.gallery-item.animate-in {
+  animation: scaleIn 0.5s ease forwards;
+}
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ---------- Form ---------- */
+.form-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(248, 243, 236, 0.85);
+  margin-bottom: 0.45rem;
+  letter-spacing: 0.02em;
+}
+.form-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(248, 243, 236, 0.06);
+  border: 1px solid rgba(198, 165, 107, 0.25);
+  color: #f8f3ec;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+.form-input::placeholder {
+  color: rgba(248, 243, 236, 0.4);
+}
+.form-input:focus {
+  outline: none;
+  border-color: #c6a56b;
+  background: rgba(248, 243, 236, 0.1);
+  box-shadow: 0 0 0 3px rgba(198, 165, 107, 0.18);
+}
+.form-input.invalid {
+  border-color: #e8a5a5;
+  box-shadow: 0 0 0 3px rgba(232, 165, 165, 0.15);
+}
+/* Make select option list readable (browser renders it outside the dark form) */
+.form-input option {
+  color: #241a16;
+  background: #f8f3ec;
+}
+/* Date / time inputs: keep icon visible on dark bg */
+.form-input[type="date"]::-webkit-calendar-picker-indicator,
+.form-input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.9);
+  cursor: pointer;
+}
+
+.form-error {
+  color: #f4b8b8;
+  font-size: 0.78rem;
+  margin-top: 0.4rem;
+  min-height: 1.1rem;
+  transition: opacity 0.2s ease;
+}
+
+/* ---------- Testimonials ---------- */
+.testimonial-slide {
+  flex: 0 0 100%;
+  padding: 0 0.5rem;
+}
+.testimonial-card {
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border: 1px solid rgba(198, 165, 107, 0.2);
+  box-shadow: 0 20px 50px -30px rgba(74, 48, 40, 0.4);
+}
+.slider-arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  border: 1px solid rgba(198, 165, 107, 0.4);
+  color: #4a3028;
+  background: #fff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.slider-arrow:hover {
+  background: #4a3028;
+  color: #f8f3ec;
+  border-color: #4a3028;
+}
+.slider-arrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: rgba(74, 48, 40, 0.25);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+.dot.active {
+  width: 26px;
+  background: #c6a56b;
+}
+
+/* ---------- Contact ---------- */
+.contact-card {
+  background: #fff;
+  border-radius: 1.25rem;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid rgba(198, 165, 107, 0.18);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 46px -26px rgba(74, 48, 40, 0.4);
+}
+.contact-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+  background: rgba(198, 165, 107, 0.15);
+  color: #c6a56b;
+  margin-bottom: 1rem;
+}
+.contact-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #c6a56b;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+a.contact-link:hover {
+  color: #a88a50;
+}
+
+/* ---------- Social ---------- */
+.social-btn {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 9999px;
+  border: 1px solid rgba(198, 165, 107, 0.45);
+  color: #4a3028;
+  transition: all 0.3s ease;
+}
+.social-btn:hover {
+  background: #4a3028;
+  color: #c6a56b;
+  border-color: #4a3028;
+  transform: translateY(-3px);
+}
+.social-btn-sm {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  border: 1px solid rgba(248, 243, 236, 0.2);
+  color: rgba(248, 243, 236, 0.7);
+  transition: all 0.3s ease;
+}
+.social-btn-sm:hover {
+  background: #c6a56b;
+  color: #241a16;
+  border-color: #c6a56b;
+}
+
+/* ---------- Footer ---------- */
+.footer-heading {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.05rem;
+  color: #f8f3ec;
+  margin-bottom: 1.1rem;
+  letter-spacing: 0.02em;
+}
+.footer-link {
+  color: rgba(248, 243, 236, 0.6);
+  transition: color 0.25s ease, padding-left 0.25s ease;
+}
+.footer-link:hover {
+  color: #c6a56b;
+  padding-left: 0.35rem;
+}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* stagger children inside a revealed grid */
+.reveal.visible > * {
+  animation: fadeUp 0.6s ease backwards;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Star rating ---------- */
+.stars {
+  display: inline-flex;
+  gap: 2px;
+  color: #c6a56b;
+}
+
+/* ---------- Lightbox open: lock scroll ---------- */
+body.lightbox-open {
+  overflow: hidden;
+}
